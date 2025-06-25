@@ -1,47 +1,54 @@
-# 📌 ToDoList Backend API
+# ToDoList Backend API
 
-Backend REST d'une application ToDoList en architecture mono-utilisateur, développé avec **Node.js**, **Express**, **Sequelize** et **MySQL**.
-
----
+Backend REST d'une application ToDoList en architecture mono-utilisateur, développé avec Node.js, Express, Sequelize et MySQL.
 
 ## 🚀 Technologies utilisées
 
-- [Node.js](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [Sequelize](https://sequelize.org/)
-- [MySQL](https://www.mysql.com/)
-- [Swagger UI](https://swagger.io/tools/swagger-ui/)
-- [Jest](https://jestjs.io/) + [Supertest](https://github.com/visionmedia/supertest) *(tests)*
-
----
+- Node.js  
+- Express  
+- Sequelize  
+- MySQL  
+- Swagger UI  
+- Jest + Supertest (tests)
 
 ## 🗂️ Structure du projet
 
 ```
 backend/
 ├── src/
-│   ├── config/           # Config BDD & Swagger
-│   ├── controllers/      # Logique des routes (CRUD)
+│   ├── config/           # Configuration de la base de données et de Swagger
+│   ├── controllers/      # Logique des routes (CRUD sur les tâches)
 │   ├── models/           # Modèles Sequelize
-│   ├── routes/           # Définition des routes
-│   ├── services/         # Logique métier
-│   ├── docs/             # Fichier Swagger
-│   ├── middlewares/      # Middlewares Express
-│   ├── app.js            # Déclaration des middlewares & routes
-│   └── server.js         # Démarrage du serveur
+│   ├── routes/           # Déclaration des routes REST
+│   ├── services/         # Logique métier (règles applicatives)
+│   ├── docs/             # Fichier Swagger pour la documentation
+│   ├── middlewares/      # Middlewares personnalisés pour Express
+│   ├── app.js            # Initialisation de l'app Express
+│   └── server.js         # Point d'entrée du serveur
 ├── tests/                # Tests unitaires et d'intégration
-├── .env                  # Variables d’environnement
-├── package.json
-└── README.md
+├── scriptSQL.sql         # Script SQL de création de la base et des tables
+├── .env                  # Variables d’environnement (non versionnées)
+├── package.json          # Dépendances, scripts, métadonnées
+└── README.md             # Documentation du backend
 ```
 
----
+## ⚙️ Configuration de l'environnement
 
-## ⚙️ Configuration
+### Prérequis
 
-1. **Créer un fichier `.env`** à la racine du dossier `backend` :
+Avant de lancer ce projet, assurez-vous d'avoir installé :
 
-```env
+- **Node.js** (version recommandée : 18.x ou supérieure)  
+- **MySQL** (avec les droits de création de base et tables)  
+- **npm** (installé avec Node.js)
+
+### Fichier `.env`
+
+Créez un fichier `.env` à la racine du dossier `backend/`. Il contient les variables nécessaires à la connexion à la base de données et à la configuration du port d'écoute du serveur Express.
+
+Exemple de fichier `.env` :
+
+```
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_password
@@ -49,28 +56,32 @@ DB_NAME=todolist_db
 PORT=3000
 ```
 
-2. **Créer la base de données** dans MySQL :
+### Base de données
+
+1. **Nom de la base attendue :** `todolist_db`  
+2. **Script de création des tables :** `scriptSQL.sql` (à exécuter après la création de la base)  
+
+Exemple SQL à lancer dans MySQL :
 
 ```sql
 CREATE DATABASE todolist_db;
 ```
-Utiliser ensuite le script présent à la racine du projet `scriptSQL.sql`
 
-3. **Installer les dépendances :**
+Puis exécuter le contenu du fichier `scriptSQL.sql` pour créer les tables nécessaires.
+
+## 📦 Installer les dépendances
 
 ```bash
 npm install
 ```
 
-4. **Lancer le projet en développement :**
+## 🚀 Lancer le projet en développement
 
 ```bash
 npm run start
 ```
 
-Le serveur écoute par défaut sur [http://localhost:3000](http://localhost:3000)
-
----
+L'API est accessible à l'adresse [http://localhost:3000](http://localhost:3000)
 
 ## 🧪 Lancer les tests
 
@@ -78,38 +89,27 @@ Le serveur écoute par défaut sur [http://localhost:3000](http://localhost:3000
 npm run test
 ```
 
----
-
 ## 📘 Documentation Swagger
 
-Disponible sur :  
+Disponible à l'adresse :  
 [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
 
-> La documentation est générée automatiquement à partir du fichier `swagger.json`.
-
----
+La documentation est générée à partir du fichier `swagger.json` dans `src/docs/`.
 
 ## 📌 Endpoints REST principaux
 
-| Méthode | Endpoint        | Description               |
-|--------:|------------------|----------------------------|
-| `GET`   | `/api/tasks`     | Récupère toutes les tâches |
-| `GET`   | `/api/tasks/:id` | Récupère une tâche         |
-| `POST`  | `/api/tasks`     | Crée une tâche             |
-| `PUT`   | `/api/tasks/:id` | Met à jour une tâche       |
-| `DELETE`| `/api/tasks/:id` | Supprime une tâche         |
-
----
+| Méthode | Endpoint         | Description              |
+|--------:|------------------|--------------------------|
+| GET     | /api/tasks       | Récupère toutes les tâches |
+| GET     | /api/tasks/:id   | Récupère une tâche        |
+| POST    | /api/tasks       | Crée une tâche            |
+| PUT     | /api/tasks/:id   | Met à jour une tâche      |
+| DELETE  | /api/tasks/:id   | Supprime une tâche        |
 
 ## 🔧 À venir
 
-- Mise en conteneurisation avec Docker
-- Intégration CI/CD
-- Déploiement
+- Dockerfile pour conteneurisation  
+- Intégration CI/CD (GitHub Actions)  
+- Déploiement sur AKS (Azure Kubernetes Service)  
+- Monitoring Prometheus + Grafana
 
----
-
-## 👤 Auteur
-
-Julien Trillard  
-[📧 Contact](mailto:julien@exemple.com)
