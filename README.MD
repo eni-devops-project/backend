@@ -44,7 +44,7 @@ Avant de lancer ce projet, assurez-vous d'avoir installé :
 
 ### Fichier `.env`
 
-Créez un fichier `.env` à la racine du dossier `backend/`. Il contient les variables nécessaires à la connexion à la base de données et à la configuration du port d'écoute du serveur Express.
+Le fichier `.env` doit se situer à la racine du dossier `backend/`. Il contient les variables nécessaires à la connexion à la base de données et à la configuration du port d'écoute du serveur Express. Il est fourni dans ce projet d'étude afin de simplifier les choses. En temps normal, ce fichier n'est pas partagé pour des raisons évidentes de sécurité.
 
 Exemple de fichier `.env` :
 
@@ -59,7 +59,8 @@ PORT=3000
 ### Base de données
 
 1. **Nom de la base attendue :** `todolist_db`  
-2. **Script de création des tables :** `scriptSQL.sql` (à exécuter après la création de la base)  
+2. (optionnel) **Sécurité** : Créer un utilisateur possédant les droits d'écriture et de lecture pour cette base de données. Définir un nom et un mot de passe à cet utilisateur à reporter dans le fichier `.env`. Si vous restez sur l'utilisation du compte **root**, il faudra laisser le champ DB_PASSWORD du fichier `.env`vide.
+3. **Script de création des tables :** `scriptSQL.sql` (à exécuter après la création de la base)  
 
 Exemple SQL à lancer dans MySQL :
 
@@ -67,7 +68,7 @@ Exemple SQL à lancer dans MySQL :
 CREATE DATABASE todolist_db;
 ```
 
-Puis exécuter le contenu du fichier `scriptSQL.sql` pour créer les tables nécessaires.
+Puis exécuter le contenu du fichier `scriptSQL.sql` pour créer les tables nécessaires. Ce fichier est à la racine du projet.
 
 ## 📦 Installer les dépendances
 
@@ -106,10 +107,5 @@ La documentation est générée à partir du fichier `swagger.json` dans `src/do
 | PUT     | /api/tasks/:id   | Met à jour une tâche      |
 | DELETE  | /api/tasks/:id   | Supprime une tâche        |
 
-## 🔧 À venir
 
-- Dockerfile pour conteneurisation  
-- Intégration CI/CD (GitHub Actions)  
-- Déploiement sur AKS (Azure Kubernetes Service)  
-- Monitoring Prometheus + Grafana
 
