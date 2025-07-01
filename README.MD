@@ -60,7 +60,7 @@ PORT=3000
 
 1. **Nom de la base attendue :** `todolist_db`  
 2. (optionnel) **Sécurité** : Créer un utilisateur possédant les droits d'écriture et de lecture pour cette base de données. Définir un nom et un mot de passe à cet utilisateur à reporter dans le fichier `.env`. Si vous restez sur l'utilisation du compte **root**, il faudra laisser le champ DB_PASSWORD du fichier `.env`vide.
-3. **Script de création des tables :** `scriptSQL.sql` (à exécuter après la création de la base)  
+3. **Script de création des tables :** `scriptSQL.sql` (à exécuter après la création de la base). Ce script est présent à la racine de ce projet.
 
 Exemple SQL à lancer dans MySQL :
 
