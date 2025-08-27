@@ -1,0 +1,36 @@
+services:
+
+  db:
+    image: mysql:9.4.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "example"
+      MYSQL_DATABASE: "todolist_db"
+      MYSQL_USER: "todolist_user"
+      MYSQL_PASSWORD: "example"
+    volumes:
+      - ./scriptSQL.sql:/docker-entrypoint-initdb.d/scriptSQL.sql
+    ports:
+      - "3306:3306"
+
+  backend:
+    image: backend:latest
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: "db"
+      DB_USER: "todolist_user"
+      DB_PASSWORD: "example"
+      DB_NAME: "todolist_db"
+      DB_DIALECT: "mysql"
+      DB_PORT: "3306"
+      PORT: "3000"
+    depends_on:
+      - db
+
+  frontend:
+    image: ghcr.io/eni-devops-project/frontend:1.0.14
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
