@@ -4,11 +4,11 @@ Backend REST d'une application ToDoList en architecture mono-utilisateur, dével
 
 ## 🚀 Technologies utilisées
 
-- Node.js  
-- Express  
-- Sequelize  
-- MySQL  
-- Swagger UI  
+- Node.js
+- Express
+- Sequelize
+- MySQL
+- Swagger UI
 - Jest + Supertest (tests)
 
 ## 🗂️ Structure du projet
@@ -38,8 +38,8 @@ backend/
 
 Avant de lancer ce projet, assurez-vous d'avoir installé :
 
-- **Node.js** (version recommandée : 18.x ou supérieure)  
-- **MySQL** (avec les droits de création de base et tables)  
+- **Node.js** (version recommandée : 18.x ou supérieure)
+- **MySQL** (avec les droits de création de base et tables)
 - **npm** (installé avec Node.js)
 
 ### Fichier `.env`
@@ -58,7 +58,7 @@ PORT=3000
 
 ### Base de données
 
-1. **Nom de la base attendue :** `todolist_db`  
+1. **Nom de la base attendue :** `todolist_db`
 2. (optionnel) **Sécurité** : Créer un utilisateur possédant les droits d'écriture et de lecture pour cette base de données. Définir un nom et un mot de passe à cet utilisateur à reporter dans le fichier `.env`. Si vous restez sur l'utilisation du compte **root**, il faudra laisser le champ DB_PASSWORD du fichier `.env`vide.
 3. **Script de création des tables :** `scriptSQL.sql` (à exécuter après la création de la base). Ce script est présent à la racine de ce projet.
 
@@ -92,7 +92,7 @@ npm run test
 
 ## 📘 Documentation Swagger
 
-Disponible à l'adresse :  
+Disponible à l'adresse :
 [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
 
 La documentation est générée à partir du fichier `swagger.json` dans `src/docs/`.
@@ -106,6 +106,3 @@ La documentation est générée à partir du fichier `swagger.json` dans `src/do
 | POST    | /api/tasks       | Crée une tâche            |
 | PUT     | /api/tasks/:id   | Met à jour une tâche      |
 | DELETE  | /api/tasks/:id   | Supprime une tâche        |
-
-
-
